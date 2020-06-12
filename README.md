@@ -1,2 +1,75 @@
 # golang_api_sample
 Simple SNS api made by Golang.
+
+# API docs
+
+## user
+
+[GET] /:user_id
+
+ユーザー情報を取得する
+
+[POST] /user
+
+ユーザーを作成する。
+params: user_id, password
+
+[GET] /:user_id/followers
+
+フォロロワー一覧を取得する
+
+[GET] /:user_id/following
+
+フォロー中のユーザー一覧を取得する
+
+いいねした日記一覧を取得する
+
+## login
+
+[POST] /login
+
+user_idとpasswordを受け取り、既に存在するユーザーであればアクセストークンを返す
+
+## follower_request
+
+[GET] /follower_requests
+
+フォローリクエストの一覧を取得する
+
+[POST] /:user_id/follower_requests
+
+フォローリクエストを送信する。
+すでにフォロー済みの場合や、自分のidを指定した場合は400 BadRequestを返す
+
+[POST] /:follower_requests_id/allow
+
+フォローリクエストを許可する
+
+
+## diary
+
+[GET] /diaries?page=1
+
+フォローしているユーザーの日記一覧を取得する。
+各日記にいいねしているかの情報も取得
+
+[GET] /:user_id:/diaries?page=1
+
+ユーザーごとの日記一覧を取得する
+
+
+[POST] /daiaries
+
+日記を投稿する
+params: content
+
+## like
+
+[POST] /:dialy_id/like
+
+日記にいいねを付ける
+自分の日記の場合は400 BadRequestを返す
+
+
+# memo
+webアプリ等でユーザーからURLが見えるなら日記の一覧取得などは`/home`とか`/`にするが、ネイティブアプリではURLが見れないので開発者が分かりやすいようにリソース名を明示する
