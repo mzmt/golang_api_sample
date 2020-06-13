@@ -73,3 +73,6 @@ params: content
 
 # memo
 webアプリ等でユーザーからURLが見えるなら日記の一覧取得などは`/home`とか`/`にするが、ネイティブアプリではURLが見れないので開発者が分かりやすいようにリソース名を明示する
+
+`/users/:id`のようなルーティングをする場合、net/httpだけでは難しいので独自の実装を加える。
+> https://blog.merovius.de/2017/06/18/how-not-to-use-an-http-router.html
