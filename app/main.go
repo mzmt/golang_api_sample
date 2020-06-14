@@ -20,6 +20,7 @@ func Router() *http.ServeMux {
     mux := http.NewServeMux()
     mux.Handle("/", methodHandler{"GET": http.HandlerFunc(handler.Root)})
 
+    mux.Handle("/users", methodHandler{"POST": http.HandlerFunc(handler.UserCreate)})
     return mux
 }
 
