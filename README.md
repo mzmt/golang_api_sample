@@ -34,7 +34,7 @@ user_idとpasswordを受け取り、既に存在するユーザーであれば�
 
 [GET] /follower_requests
 
-フォローリクエストの一覧を取得する
+自分のフォローリクエストの一覧を取得する。他人のフォローリクエストの一覧は取得することができない
 
 [POST] /:user_id/follower_requests
 
@@ -58,14 +58,14 @@ user_idとpasswordを受け取り、既に存在するユーザーであれば�
 ユーザーごとの日記一覧を取得する
 
 
-[POST] /daiaries
+[POST] /diaries
 
 日記を投稿する
 params: content
 
 ## like
 
-[POST] /:dialy_id/like
+[POST] diaries/:dialy_id/like
 
 日記にいいねを付ける
 自分の日記の場合は400 BadRequestを返す

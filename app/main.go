@@ -3,6 +3,7 @@ package main
 import (
     "fmt"
     "net/http"
+    "github.com/gorilla/mux"
     "github.com/mzmt/golang_api_sample/app/model"
     "github.com/mzmt/golang_api_sample/app/handler"
 )
@@ -17,10 +18,15 @@ func (m methodHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
     http.Error(w, "method not allowed.", http.StatusMethodNotAllowed)
 }
 
-func Router() *http.ServeMux {
-    mux := http.NewServeMux()
-    mux.Handle("/", methodHandler{"GET": http.HandlerFunc(handler.Root)})
-    mux.Handle("/users", methodHandler{"POST": http.HandlerFunc(handler.CreateUser)})
+func Router() *mux.Router {
+    mux := mux.NewRouter()
+
+    mux.HandleFunc("/", handler.Root).Methods("GET")
+    mux.HandleFunc("/diaries", handler.GetAllDiaries).Methods("GET")
+    mux.HandleFunc("/diaries/{id:[0-9]+}", handler.CreateDiary).Methods("GET")
+    mux.HandleFunc("/diaries", handler.CreateDiary).Methods("POST")
+    mux.HandleFunc("/users", handler.CreateDiary).Methods("POST")
+
     return mux
 }
 
