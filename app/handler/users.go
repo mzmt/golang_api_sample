@@ -12,7 +12,7 @@ func CreateUser(w http.ResponseWriter, r *http.Request) {
     log.Println("create user, name: " + r.Header.Get("name"))
     db := model.ConnectDB()
 
-    user := model.User{Name: r.Header.Get("name"), Pasword: r.Header.Get("Password"), Token: generate_token()}
+    user := model.User{Name: r.Header.Get("name"), Password: r.Header.Get("password"), Token: generate_token()}
     db.Create(&user)
 
     respondJSON(w, http.StatusOK, user)

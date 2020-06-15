@@ -18,8 +18,8 @@ type Like struct {
 type User struct {
     gorm.Model
     Diary   Diary    `gorm:"foreignkey:ID;association_foreignkey:UserId"`
-    Name    string   `gorm:column:name`
-    Pasword string   `gorm:column:password`
+    Name    string   `gorm:"unique;not null`
+    Password string  `gorm:"unique;not null"`
     Token   int      `gorm:column:token`
 }
 

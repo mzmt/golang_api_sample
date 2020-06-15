@@ -22,10 +22,14 @@ func Router() *mux.Router {
     mux := mux.NewRouter()
 
     mux.HandleFunc("/", handler.Root).Methods("GET")
+    // diary
     mux.HandleFunc("/diaries", handler.GetAllDiaries).Methods("GET")
     mux.HandleFunc("/diaries/{id:[0-9]+}", handler.CreateDiary).Methods("GET")
     mux.HandleFunc("/diaries", handler.CreateDiary).Methods("POST")
+    // user
     mux.HandleFunc("/users", handler.CreateUser).Methods("POST")
+    // login
+    mux.HandleFunc("/login", handler.Login).Methods("POST")
 
     return mux
 }
