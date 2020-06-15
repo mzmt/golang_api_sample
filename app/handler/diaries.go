@@ -26,10 +26,9 @@ func CreateDiary(w http.ResponseWriter, r *http.Request) {
     }
     db := model.ConnectDB()
 
-    user_id_int, _ := strconv.Atoi(mux.Vars(r)["user_id"])
-    user_id_uint := uint(user_id_int)
-    // todo id取れてない
-    diary := model.Diary{Content: r.Header.Get("content"), UserID: user_id_uint}
+    current_user := GetUserObject(w, r)
+    if current_user == nil { return }
+    diary := model.Diary{Content: r.Header.Get("content"), UserID: current_user.ID}
     db.Create(&diary)
 
     json.NewEncoder(w).Encode(diary)

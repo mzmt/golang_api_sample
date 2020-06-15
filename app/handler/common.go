@@ -28,11 +28,8 @@ func auth(w http.ResponseWriter, r *http.Request) (bool) {
     user := model.User{}
     token, _ := strconv.Atoi(r.Header.Get("token"))
 
-    // if !ok {
-    //     respondError(w, 403, "forbidden")
-    //     return false
-    // }
-
+    // これはできない
+    // if token == nil { return false }
     if err := db.Where("token = ?", token).First(&user).Error; err != nil {
         respondJSON(w, http.StatusForbidden, err.Error())
         return false

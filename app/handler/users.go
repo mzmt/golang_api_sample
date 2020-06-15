@@ -4,9 +4,19 @@ import (
     "log"
     "math/rand"
     "time"
+    "strconv"
     "net/http"
     "github.com/mzmt/golang_api_sample/app/model"
 )
+
+func GetUserObject(w http.ResponseWriter, r *http.Request) (*model.User) {
+    db := model.ConnectDB()
+    user := model.User{}
+    token, _ := strconv.Atoi(r.Header.Get("token"))
+
+    db.Where("token = ?", token).First(&user)
+    return &user
+}
 
 func CreateUser(w http.ResponseWriter, r *http.Request) {
     log.Println("create user, name: " + r.Header.Get("name"))
