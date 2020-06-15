@@ -36,6 +36,9 @@ func CreateDiary(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetDiary(w http.ResponseWriter, r *http.Request) {
+    if !auth(w, r) {
+        return
+    }
     db := model.ConnectDB()
 
     id, _ := strconv.Atoi(mux.Vars(r)["id"])
