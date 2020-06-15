@@ -5,10 +5,6 @@ Simple SNS api made by Golang.
 
 ## user
 
-[GET] /:user_id
-
-ユーザー情報を取得する
-
 [POST] /user
 
 ユーザーを作成する。

@@ -9,6 +9,9 @@ import (
 )
 
 func GetAllDiaries(w http.ResponseWriter, r *http.Request) {
+    if !auth(w, r) {
+        return
+    }
     db := model.ConnectDB()
 
     diaries := []model.Diary{}
@@ -18,8 +21,15 @@ func GetAllDiaries(w http.ResponseWriter, r *http.Request) {
 }
 
 func CreateDiary(w http.ResponseWriter, r *http.Request) {
+    if !auth(w, r) {
+        return
+    }
     db := model.ConnectDB()
-    diary := model.Diary{Content: r.Header.Get("content")}
+
+    user_id_int, _ := strconv.Atoi(mux.Vars(r)["user_id"])
+    user_id_uint := uint(user_id_int)
+    // todo id取れてない
+    diary := model.Diary{Content: r.Header.Get("content"), UserID: user_id_uint}
     db.Create(&diary)
 
     json.NewEncoder(w).Encode(diary)

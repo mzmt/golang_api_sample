@@ -3,6 +3,8 @@ package handler
 import (
     "net/http"
     "encoding/json"
+    "strconv"
+    "github.com/mzmt/golang_api_sample/app/model"
 )
 
 func respondJSON(w http.ResponseWriter, status int, payload interface{}) {
@@ -15,4 +17,25 @@ func respondJSON(w http.ResponseWriter, status int, payload interface{}) {
   w.Header().Set("Content-Type", "application/json")
   w.WriteHeader(status)
   w.Write([]byte(response))
+}
+
+func respondError(w http.ResponseWriter, code int, message string) {
+    respondJSON(w, code, map[string]string{"error": message})
+}
+
+func auth(w http.ResponseWriter, r *http.Request) (bool) {
+    db := model.ConnectDB()
+    user := model.User{}
+    token, _ := strconv.Atoi(r.Header.Get("token"))
+
+    // if !ok {
+    //     respondError(w, 403, "forbidden")
+    //     return false
+    // }
+
+    if err := db.Where("token = ?", token).First(&user).Error; err != nil {
+        respondJSON(w, http.StatusForbidden, err.Error())
+        return false
+    }
+    return true
 }
