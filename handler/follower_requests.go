@@ -45,6 +45,6 @@ func AllowFollowerRequest(w http.ResponseWriter, r *http.Request) {
 
     db.Where("user_id = ?", current_user.ID).Where("follower_request_id", id).Find(&f_requests)
     db.Model(&f_requests).Update("allow", true)
-    respondJSON(w, http.StatusOK, f_requests)
 
+    respondJSON(w, http.StatusOK, f_requests)
 }
