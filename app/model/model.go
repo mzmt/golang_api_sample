@@ -1,6 +1,7 @@
 package model
 
 import (
+    "math/big"
     "github.com/jinzhu/gorm"
     _ "github.com/jinzhu/gorm/dialects/postgres"
 )
@@ -18,5 +19,5 @@ type User struct {
     gorm.Model
     Name    string  `gorm:column:name`
     Pasword string  `gorm:column:password`
-    Token   string  `gorm:column:token`
+    Token   *big.Int  `gorm:column:token`
 }

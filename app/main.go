@@ -25,7 +25,7 @@ func Router() *mux.Router {
     mux.HandleFunc("/diaries", handler.GetAllDiaries).Methods("GET")
     mux.HandleFunc("/diaries/{id:[0-9]+}", handler.CreateDiary).Methods("GET")
     mux.HandleFunc("/diaries", handler.CreateDiary).Methods("POST")
-    mux.HandleFunc("/users", handler.CreateDiary).Methods("POST")
+    mux.HandleFunc("/users", handler.CreateUser).Methods("POST")
 
     return mux
 }
