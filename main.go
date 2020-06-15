@@ -4,8 +4,8 @@ import (
     "fmt"
     "net/http"
     "github.com/gorilla/mux"
-    "github.com/mzmt/golang_api_sample/app/model"
-    "github.com/mzmt/golang_api_sample/app/handler"
+    "github.com/mzmt/golang_api_sample/model"
+    "github.com/mzmt/golang_api_sample/handler"
 )
 
 type methodHandler map[string]http.Handler

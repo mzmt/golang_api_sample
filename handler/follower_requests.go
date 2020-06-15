@@ -2,7 +2,7 @@ package handler
 
 import (
     "net/http"
-    "github.com/mzmt/golang_api_sample/app/model"
+    "github.com/mzmt/golang_api_sample/model"
 )
 
 func CreateFollowerRequest(w http.ResponseWriter, r *http.Request) {
@@ -14,7 +14,7 @@ func CreateFollowerRequest(w http.ResponseWriter, r *http.Request) {
     respondJSON(w, http.StatusOK, f_request)
 }
 
-func GetAllFollowerRequest(w http.ResponseWriter, r *http.Request) {
+func GetAllFollowerRequests(w http.ResponseWriter, r *http.Request) {
     db := model.ConnectDB()
 
     f_requests := []model.FollowerRequest{}

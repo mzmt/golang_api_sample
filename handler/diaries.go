@@ -5,7 +5,7 @@ import (
     "encoding/json"
     "strconv"
     "github.com/gorilla/mux"
-    "github.com/mzmt/golang_api_sample/app/model"
+    "github.com/mzmt/golang_api_sample/model"
 )
 
 func GetAllDiaries(w http.ResponseWriter, r *http.Request) {

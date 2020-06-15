@@ -4,7 +4,7 @@ import (
     "net/http"
     "encoding/json"
     "strconv"
-    "github.com/mzmt/golang_api_sample/app/model"
+    "github.com/mzmt/golang_api_sample/model"
 )
 
 func respondJSON(w http.ResponseWriter, status int, payload interface{}) {
