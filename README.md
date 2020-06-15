@@ -12,7 +12,7 @@ Simple SNS api made by Golang.
 [POST] /user
 
 ユーザーを作成する。
-params: user_id, password
+params: name, password
 
 [GET] /:user_id/followers
 
