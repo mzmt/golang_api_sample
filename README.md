@@ -32,7 +32,7 @@ user_idとpasswordを受け取り、既に存在するユーザーであれば�
 
 自分のフォローリクエストの一覧を取得する。他人のフォローリクエストの一覧は取得することができない
 
-[POST] /:user_id/follower_requests
+[POST] /follower_requests/:user_id
 
 フォローリクエストを送信する。
 すでにフォロー済みの場合や、自分のidを指定した場合は400 BadRequestを返す

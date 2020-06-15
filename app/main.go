@@ -28,6 +28,11 @@ func Router() *mux.Router {
     mux.HandleFunc("/diaries", handler.CreateDiary).Methods("POST")
     // user
     mux.HandleFunc("/users", handler.CreateUser).Methods("POST")
+    // follower_request
+    mux.HandleFunc("/follower_requests", handler.GetAllFollowerRequests).Methods("GET")
+    mux.HandleFunc("/follower_requests/{id:[0-9]+}", handler.CreateFollowerRequest).Methods("POST")
+    // like
+    mux.HandleFunc("/diaries/{id:[0-9]+}/like", handler.CreateLike).Methods("POST")
     // login
     mux.HandleFunc("/login", handler.Login).Methods("POST")
 

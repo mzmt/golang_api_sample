@@ -23,7 +23,7 @@ func ConnectDB() *gorm.DB {
 
 func MigrateDB(db *gorm.DB) *gorm.DB {
     log.Println("migration start")
-    db.AutoMigrate(&User{}, &Diary{})
+    db.AutoMigrate(&User{}, &Diary{}, &FollowerRequest{}, &Like{})
     // db.Model(&Diary{}).AddForeignKey("diary_id", "projects(id)", "CASCADE", "CASCADE")
     return db
 }
