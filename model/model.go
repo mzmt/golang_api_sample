@@ -32,4 +32,5 @@ type FollowerRequest struct {
     gorm.Model
     UserID        uint  `gorm:column:user_id`
     TargetUserID  uint  `gorm:column:target_user_id`
+    Allow         bool  `gorm:column:allow`
 }

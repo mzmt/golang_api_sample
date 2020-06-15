@@ -37,7 +37,7 @@ user_idとpasswordを受け取り、既に存在するユーザーであれば�
 フォローリクエストを送信する。
 すでにフォロー済みの場合や、自分のidを指定した場合は400 BadRequestを返す
 
-[POST] /:follower_requests_id/allow
+[POST] /follower_requests/:id/allow
 
 フォローリクエストを許可する
 
